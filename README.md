@@ -4,7 +4,7 @@ He may solve questions about driving a car.
 
 ## environment
 
-+ Heroku + Ruby 1.9
++ Heroku + Ruby 1.9 + Rails 3
 
 ## flow
 
@@ -19,6 +19,16 @@ He may solve questions about driving a car.
     + A dataset was created by using over 1,000 questions.
 
 5. The system judgments finally.
+
+## used gem
+
++ yahoo_parse_api
+
++ json
+
++ libsvm-ruby-swig
+
++ nokogiri (for scraping)
 
 ## thanks
 
