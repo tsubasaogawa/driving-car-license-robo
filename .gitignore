@@ -14,3 +14,8 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+/app/controllers/data/api_key.txt
+/app/controllers/data/questions.train.model
+/app/controllers/data/questions_test.json
+/app/controllers/data/words.dict
