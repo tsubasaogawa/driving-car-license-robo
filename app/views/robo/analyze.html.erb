@@ -1,2 +1,17 @@
-<h1>Robo#analyze</h1>
-<p>Find me in app/views/robo/analyze.html.erb</p>
+
+<p>
+<%= @text %>
+</p>
+
+<p>
+<% if @morpho_result %>
+  <% @morpho_result.each do |e| %>
+    <%= e['word'] %>(id=<%= e['id'] %>): <%= e['count'] %>
+  <br>
+  <% end %>
+<% end %>
+</p>
+
+<p>
+<%= @system_output %>
+</p>

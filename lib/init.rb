@@ -5,13 +5,13 @@ require 'yahoo_parse_api'
 
 # API KEYの設定
 if ENV['yahoo_app_id'] # on heroku
-  id = ENV['yahoo_app_id']
+  YAHOO_ID = ENV['yahoo_app_id']
 else # on local
   f = File.open('app/controllers/data/api_key.txt')
-  id = f.read.
-  id = 'dj0zaiZpPU1hZ00wMTNIQnQyQyZzPWNvbnN1bWVyc2VjcmV0Jng9YTA-'
+  YAHOO_ID = f.read.chomp
+  f.close
 end
-YahooParseApi::Config.app_id = id
+YahooParseApi::Config.app_id = YAHOO_ID
 
 QUESTION_FILE = 'app/controllers/data/questions.json'
 DICT_FILE = 'app/controllers/data/words.dict'

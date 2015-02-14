@@ -18,7 +18,9 @@ class BoW
       if id = @dict_array.index(word_hash['surface'])
         output_hash["#{id}"] = word_hash['count']
         @words.push({'word' => word_hash['surface'], 'count' => word_hash['count'], 'id' => id})
-      end
+	 else
+        @words.push({'word' => word_hash['surface'], 'count' => word_hash['count'], 'id' => -1})
+      end	 
     end
     return output_hash.sort{|a, b| a[0].to_i <=> b[0].to_i}
   end

@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Robo</title>
+  <title>効果測定自動解答ロボ</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<h1><a href="/">効果測定自動解答ロボ</a></h1>
+
+<%= form_tag('/analyze') do %>
+  <%= text_area 'input','user', :size=>'60x3' %>
+  <%= submit_tag '教えて! ロボ' %>
+<% end %>
 
 <%= yield %>
 

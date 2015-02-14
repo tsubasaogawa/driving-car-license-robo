@@ -16,6 +16,5 @@
 /tmp
 
 /app/controllers/data/api_key.txt
-/app/controllers/data/questions.train.model
+/app/controllers/data/questions.train
 /app/controllers/data/questions_test.json
-/app/controllers/data/words.dict
