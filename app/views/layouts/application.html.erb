@@ -6,8 +6,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div align="center">
 <h1><a href="/">効果測定自動解答ロボ</a></h1>
+<p><a href="/"><%= image_tag "title#{@result_pn}.png" %></a></p>
 
 <%= form_tag('/analyze') do %>
   <%= text_area 'input','user', :size=>'60x3' %>
@@ -15,6 +16,6 @@
 <% end %>
 
 <%= yield %>
-
+</div>
 </body>
 </html>
