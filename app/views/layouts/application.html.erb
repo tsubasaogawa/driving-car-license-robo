@@ -8,7 +8,16 @@
 <body>
 <div align="center">
 <h1><a href="/">効果測定解答ロボ</a></h1>
-<p><a href="/"><%= image_tag "title#{@result_pn}.png" %></a></p>
+<p>
+  <a href="/">
+  <script>
+  var urlbody = 'https://dl.dropboxusercontent.com/u/53437072/title';
+  var filebody = '<%= "#{@result_pn}" %>';
+  document.write('<img src="' + urlbody + filebody + '.png">');
+  // document.write(urlbody + filebody + '.png');
+  </script>
+  </a>
+</p>
 
 <%= form_tag('/analyze') do %>
   <%= text_area 'input','user', :size=>'60x3' %>
