@@ -1,8 +1,10 @@
 # encoding: utf-8
+# 問題jsonファイルを学習データに変換する
 
 require './init'
 require './bag_of_words'
 
+# 学習データに変換
 def jsonfile_to_data(jsonfile)
   f = File.open(jsonfile, 'r')
   json = f.read
@@ -11,6 +13,7 @@ def jsonfile_to_data(jsonfile)
   data = JSON.parse(utf_json)
 end
 
+# 問題を一度辞書に変換
 class QuestionToDictionary
   def initialize(savefile, readfile)
     @savefile = savefile
@@ -19,21 +22,19 @@ class QuestionToDictionary
   
   def convert
     data = jsonfile_to_data(@readfile)
-    parser = YahooParseApi::Parse.new
+    parser = YahooKeyphraseApi::KeyPhrase.new
     words_array = []
     
     f = File.open(@savefile, 'w')
     data.each do |five_questions|
 	  five_questions.each do |question|
-        result = parser.parse(question['question'], {
-          results: 'ma,uniq',
-          uniq_filter: UNIQ_FILTER
-        })
-        result['ResultSet']['uniq_result']['word_list']['word'].each do |word_hash|
-	      if !words_array.include?(word_hash['surface'])
-             words_array.push(word_hash['surface'])
-		    f.puts(word_hash['surface'])
-  	      end
+        # Yahoo APIキーフレーズ解析インスタンス
+        result = parser.extract(question['question'])
+        result.each_value do |key, value|
+          if !words_array.include?(key)
+            words_array.push(key)
+            f.puts(key)
+          end
   	    end
 	  end
 	end
@@ -41,6 +42,7 @@ class QuestionToDictionary
   end
 end
 
+# 問題をデータセットに変換
 class QuestionToTrain
   def initialize(trainfile, questionfile, dictfile)
     @trainfile = trainfile
