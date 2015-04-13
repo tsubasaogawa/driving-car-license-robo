@@ -17,7 +17,7 @@ end
 class QuestionToDictionary
   def initialize(savefile, readfile)
     @savefile = savefile
-	@readfile = readfile
+    @readfile = readfile
   end
   
   def convert
@@ -27,17 +27,17 @@ class QuestionToDictionary
     
     f = File.open(@savefile, 'w')
     data.each do |five_questions|
-	  five_questions.each do |question|
+      five_questions.each do |question|
         # Yahoo APIキーフレーズ解析インスタンス
         result = parser.extract(question['question'])
-        result.each_value do |key, value|
-          if !words_array.include?(key)
+        result.each_pair do |key, value|
+          if !words_array.include?(key) and value > KEYPHRASE_THRES
             words_array.push(key)
             f.puts(key)
           end
-  	    end
-	  end
-	end
+        end
+      end
+    end
     f.close
   end
 end
@@ -58,7 +58,7 @@ class QuestionToTrain
     t = File.open(@trainfile, 'w')
 
     bow = BoW.new(dl.dictionary)
-	
+  
     data.each do |five_questions|
       five_questions.each do |question|
         output_str = '' + ANSWER_TO_ID["#{question['answer']}"]
@@ -77,5 +77,6 @@ end
 
 q = QuestionToDictionary.new(DICT_FILE, QUESTION_FILE)
 q.convert
+
 q = QuestionToTrain.new(TRAIN_FILE, QUESTION_FILE, DICT_FILE)
 q.convert

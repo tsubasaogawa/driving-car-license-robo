@@ -3,27 +3,24 @@
 class BoW
   def initialize(dict_array)
     @dict_array = dict_array
-    @parser = YahooParseApi::Parse.new
+    @parser = YahooKeyphraseApi::KeyPhrase.new
   end
   
   # 文を形態素解析し、ソート済の配列の配列: [[ID, count], [ID, count], ...]で返す
   def convert_to_feature(sentence)
     output_hash = {}
     @words = []
-    result = @parser.parse(sentence, {
-      results: 'ma,uniq',
-      uniq_filter: UNIQ_FILTER
-    })
-    if result['ResultSet']['uniq_result']['word_list'] == nil
+    result = @parser.extract(sentence)
+    if result == nil
       output_hash[0] = nil
       @words = nil
     else
-      result['ResultSet']['uniq_result']['word_list']['word'].each do |word_hash|
-        if id = @dict_array.index(word_hash['surface'])
-          output_hash["#{id}"] = word_hash['count']
-          @words.push({'word' => word_hash['surface'], 'count' => word_hash['count'], 'id' => id})
+      result.each_pair do |key, value|
+        if id = @dict_array.index(key)
+          output_hash["#{id}"] = 1 # 便宜的にカウントは1に固定
+          @words.push({'word' => key, 'count' => 1, 'id' => id})
         else
-          @words.push({'word' => word_hash['surface'], 'count' => word_hash['count'], 'id' => -1})
+          @words.push({'word' => key, 'count' => 1, 'id' => -1})
         end	 
       end
     end

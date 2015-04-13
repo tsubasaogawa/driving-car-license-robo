@@ -18,11 +18,12 @@ end
 YahooKeyphraseApi::Config.app_id = YAHOO_ID
 
 QUESTION_FILE = TEMP_DIR + 'app/controllers/data/questions.json'
-DICT_FILE = TEMP_DIR + 'app/controllers/data/words_ltd2.dict'
-TRAIN_FILE = TEMP_DIR + 'app/controllers/data/questions_ltd2.train'
+DICT_FILE = TEMP_DIR + 'app/controllers/data/words_kp.dict'
+TRAIN_FILE = TEMP_DIR + 'app/controllers/data/questions_kp.train'
 MODEL_FILE = TRAIN_FILE + '.model'
 ANSWER_TO_ID = {'○'=>'+1', '×'=>'-1'}
 UNIQ_FILTER = '9'#'1|4|5|8|9|12'
+KEYPHRASE_THRES = 70
 
 class DictionaryLoader
   def initialize(dictfile)
