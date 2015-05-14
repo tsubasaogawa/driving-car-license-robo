@@ -14,7 +14,7 @@ end
 class QuestionToDictionary
   def initialize(savefile, readfile)
     @savefile = savefile
-	@readfile = readfile
+    @readfile = readfile
   end
   
   def convert
@@ -24,19 +24,19 @@ class QuestionToDictionary
     
     f = File.open(@savefile, 'w')
     data.each do |five_questions|
-	  five_questions.each do |question|
+      five_questions.each do |question|
         result = parser.parse(question['question'], {
           results: 'ma,uniq',
           uniq_filter: UNIQ_FILTER
         })
         result['ResultSet']['uniq_result']['word_list']['word'].each do |word_hash|
-	      if !words_array.include?(word_hash['surface'])
-             words_array.push(word_hash['surface'])
-		    f.puts(word_hash['surface'])
-  	      end
-  	    end
-	  end
-	end
+          if !words_array.include?(word_hash['surface'])
+            words_array.push(word_hash['surface'])
+            f.puts(word_hash['surface'])
+          end
+        end
+      end
+    end
     f.close
   end
 end

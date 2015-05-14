@@ -7,13 +7,13 @@ class RoboController < ApplicationController
   def index
 
   end
-  
+
   def analyze
     @result_pn = ''
     if params['input']['user'] == ''
-	  @system_output = '文字が入力されていないよ'
-	  @morpho_result = nil
-	else
+      @system_output = '文字が入力されていないよ'
+      @morpho_result = nil
+    else
       @text = params['input']['user']
       analyser = MorphologicalAnalyzer.new(@text)
       @morpho_result = analyser.analyze

@@ -24,7 +24,7 @@ class BoW
           @words.push({'word' => word_hash['surface'], 'count' => word_hash['count'], 'id' => id})
         else
           @words.push({'word' => word_hash['surface'], 'count' => word_hash['count'], 'id' => -1})
-        end	 
+        end
       end
     end
     return output_hash.sort{|a, b| a[0].to_i <=> b[0].to_i}
