@@ -19,7 +19,7 @@ DICT_FILE = "#{FILE_DIR}/words.dict"
 TRAIN_FILE = "#{FILE_DIR}/questions.opt5.bl.train"
 MODEL_FILE = TRAIN_FILE + '.model'
 ANSWER_TO_ID = {'○'=>'1', '×'=>'-1'}
-UNIQ_FILTER = '1|4|5|8|9|10|12'
+UNIQ_FILTER = '1|9|10|12'
 
 class DictionaryLoader
   def initialize(dictfile)
