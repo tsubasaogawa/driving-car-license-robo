@@ -20,6 +20,7 @@ TRAIN_FILE = "#{FILE_DIR}/questions.opt5.important_marked.bl.train"
 MODEL_FILE = TRAIN_FILE + '.model'
 ANSWER_TO_ID = {'○'=>'1', '×'=>'-1'}
 UNIQ_FILTER = '1|9|10|12'
+IMPORTANT_IDS = %w(3 16 35 73 81 139)
 
 class DictionaryLoader
   def initialize(dictfile)

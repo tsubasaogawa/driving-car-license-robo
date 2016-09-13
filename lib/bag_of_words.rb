@@ -21,8 +21,8 @@ class BoW
       result['ResultSet']['uniq_result']['word_list']['word'].each do |word_hash|
         # 辞書内に単語があれば機械学習に食べさせる
         if id = @dict_array.index(word_hash['surface'])
-          output_hash["#{id}"] = word_hash['count'] + get_weight_of_word_id(id)
-          @words.push({'word' => word_hash['surface'], 'count' => word_hash['count'], 'id' => id})
+          output_hash["#{id}"] = word_hash['count'] 
+          @words.push({'word' => word_hash['surface'], 'count' => word_hash['count'].to_i + get_weight_of_word_id(id), 'id' => id})
 	# 辞書になければ、その単語は無視する (id=-1)
         else
           @words.push({'word' => word_hash['surface'], 'count' => word_hash['count'], 'id' => -1})
@@ -33,7 +33,7 @@ class BoW
   end
   
   def get_weight_of_word_id(id)
-    @important_ids.each do |important_id|
+    IMPORTANT_IDS.each do |important_id|
       if id == important_id
         return 1
       end
