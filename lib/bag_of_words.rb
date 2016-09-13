@@ -6,7 +6,7 @@ class BoW
     @parser = YahooParseApi::Parse.new
   end
   
-  # �����`�ԑf��͂��A�\�[�g�ς̔z��̔z��: [[ID, count], [ID, count], ...]�ŕԂ�
+  # 文を形態素解析し、ソート済の配列の配列: [[ID, count], [ID, count], ...]で返す
   def convert_to_feature(sentence)
     output_hash = {}
     @words = []
@@ -19,9 +19,11 @@ class BoW
       @words = nil
     else
       result['ResultSet']['uniq_result']['word_list']['word'].each do |word_hash|
+        # 辞書内に単語があれば機械学習に食べさせる
         if id = @dict_array.index(word_hash['surface'])
-          output_hash["#{id}"] = word_hash['count']
+          output_hash["#{id}"] = word_hash['count'] + get_weight_of_word_id(id)
           @words.push({'word' => word_hash['surface'], 'count' => word_hash['count'], 'id' => id})
+	# 辞書になければ、その単語は無視する (id=-1)
         else
           @words.push({'word' => word_hash['surface'], 'count' => word_hash['count'], 'id' => -1})
         end	 
@@ -30,5 +32,13 @@ class BoW
     return output_hash.sort{|a, b| a[0].to_i <=> b[0].to_i}
   end
   
+  def get_weight_of_word_id(id)
+    @important_ids.each do |important_id|
+      if id == important_id
+        return 1
+      end
+    end
+    0
+  end
   attr_reader :words
 end
