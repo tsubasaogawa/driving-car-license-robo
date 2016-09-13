@@ -16,7 +16,7 @@ end
 YahooParseApi::Config.app_id = YAHOO_ID
 QUESTION_FILE = "#{FILE_DIR}/questions.json"
 DICT_FILE = "#{FILE_DIR}/words.dict"
-TRAIN_FILE = "#{FILE_DIR}/questions.opt5.bl.train"
+TRAIN_FILE = "#{FILE_DIR}/questions.opt5.important_marked.bl.train"
 MODEL_FILE = TRAIN_FILE + '.model'
 ANSWER_TO_ID = {'○'=>'1', '×'=>'-1'}
 UNIQ_FILTER = '1|9|10|12'
