@@ -1,6 +1,6 @@
 # driving car license robo
 
-He may solve questions about driving a car.
+Question solver about driving a car
 
 ## environment
 
@@ -8,33 +8,19 @@ He may solve questions about driving a car.
 
 ## flow
 
-1. An user can input a driving question.
+1. Input driving question.
 
-2. The system splits the sentence into morphemes using Yahoo! morphological API.
+2. The robo splits the sentence into morphemes using Yahoo! morphological API.
 
 3. The morphemes are converted to features with bag-of-words.
 
 4. The obtained features are used for SVM: support vector machines.
 
-    + A dataset was created by using over 1,000 questions.
+    + Dataset was created by using over 1,000 questions.
 
-5. The system judgments finally.
+5. Judgments.
 
-## used gem
-
-+ yahoo_parse_api
-
-+ json
-
-+ libsvm-ruby-swig
-
-+ nokogiri (for scraping)
-
-## thanks
+## special thanks
 
 http://menkyo-web.com/
-
-## contact
-
-Author: Tsubasa Ogawa (hurikaketown@hotmail)
 
