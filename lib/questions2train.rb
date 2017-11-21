@@ -29,6 +29,7 @@ class QuestionToDictionary
           results: 'ma,uniq',
           uniq_filter: UNIQ_FILTER
         })
+        next if result['ResultSet']['uniq_result']['word_list'] == nil
         result['ResultSet']['uniq_result']['word_list']['word'].each do |word_hash|
 	      if !words_array.include?(word_hash['surface'])
              words_array.push(word_hash['surface'])
@@ -59,6 +60,7 @@ class QuestionToTrain
 	
     data.each do |five_questions|
       five_questions.each do |question|
+        next if ANSWER_TO_ID["#{question['answer']}"] == nil
         output_str = '' + ANSWER_TO_ID["#{question['answer']}"]
 
         features = bow.convert_to_feature(question['question'])
@@ -73,7 +75,9 @@ class QuestionToTrain
   end
 end
 
+# 辞書ファイルを作成
 q = QuestionToDictionary.new(DICT_FILE, QUESTION_FILE)
 q.convert
+# トレーニングデータを作成
 q = QuestionToTrain.new(TRAIN_FILE, QUESTION_FILE, DICT_FILE)
 q.convert

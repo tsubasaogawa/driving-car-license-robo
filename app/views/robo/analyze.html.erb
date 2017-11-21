@@ -5,13 +5,16 @@
 
 <p>
 <% if @morpho_result %>
+  <table border="1" width="300px">
+    <caption>result by morphological analyzer using bag-of-words</caption>
+    <tr><th>dict_id</th><th>word</th><th>count</th></tr>
   <% @morpho_result.each do |e| %>
-    <%= e['word'] %>(id=<%= e['id'] %>): <%= e['count'] %>
-  <br>
+  <tr><td><%= e['id'] %></td><td><%= e['word'] %></td><td><%= e['count'] %></td></tr>
   <% end %>
+  </table>
 <% end %>
 </p>
 
 <p>
-<%= @system_output %>
+system result: <%= @system_output %>
 </p>

@@ -26,17 +26,17 @@
 
 <%= yield %>
 </div>
-<div align="center">
-<p>
-Version: 1.00 alpha<br />
-効果測定の問題をロボが解きます。<br />
-学習にあたっては、<a href="http://menkyo-web.com/" target="_blank">menkyo-web.com</a>さんの問題を勝手ながら利用させていただきました。私の教習生時代からお世話になっております。問題がありましたら連絡を下さい。<br />
-技術的な話では、1000問程度の問題をヤフーの形態素解析APIで分解し、Bag-of-Words一本でベクトル化しています。<br />
-現在のところ、正解率は53%程度とまだまだです。おそらく次元の呪いにかかっています。<br />
-今後の課題として学習モデルのチューンアップが考えられます。あと、かっこよくしたい。
+<div style="text-align:center">
+<p>Training Data (scraping from):</p>
+<ul>
+<li><a href="http://menkyo-web.com/" target="_blank">menkyo-web.com</a></li>
+<li><a href="http://www5b.biglobe.ne.jp/~nobusann/" target="_blank">unten-menkyo.toru</a></li>
+<li><a href="http://www.takaragaike.co.jp/" target="_blank">takaragaike.co.jp</a></li>
+</ul>
 </p>
+</div>
 <script type="text/javascript">
-document.forms[0].elements["input[user]"].value = "一方通行の道路で右折するときは、あらかじめ道路の中央によって徐行しなければならない。";
+document.forms[0].elements["input[user]"].value = "進路を変更しようとするときは、３秒前に合図をすれば他の交通に関係なく進路を変えてもよい。";
 </script>
 </body>
 </html>
