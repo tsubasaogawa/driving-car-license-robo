@@ -26,7 +26,7 @@ class BoW
 	# 辞書になければ、その単語は無視する (id=-1)
         else
           @words.push({'word' => word_hash['surface'], 'count' => word_hash['count'], 'id' => -1})
-        end	 
+        end
       end
     end
     return output_hash.sort{|a, b| a[0].to_i <=> b[0].to_i}

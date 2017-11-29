@@ -17,22 +17,22 @@ class GetQuestions
   def initialize(url)
     @url = url
   end
-  
+
   def parse(element)
-	@result = [] # 問題文、答え、解説の順で格納される
-	
-	doc = Nokogiri::HTML.parse(open(@url), nil, 'cp932')
-	doc.xpath(element).each do |node|
-	  temp = {} # 1問題分のハッシュ
-	  temp['question'] = node.xpath('tr/th[@class="left"]').text
-	  desc = node.xpath('tr/td/span[@class="font-futozi01"]').text
-	  m = /#{MATCH_TEXT}/u.match(desc)
-	  temp['answer'] = m[1]
-	  temp['description'] = m[2] # nilにはならない
-	  @result.push(temp)
-	end
-   end
-   
+    @result = [] # 問題文、答え、解説の順で格納される
+
+    doc = Nokogiri::HTML.parse(open(@url), nil, 'cp932')
+    doc.xpath(element).each do |node|
+      temp = {} # 1問題分のハッシュ
+      temp['question'] = node.xpath('tr/th[@class="left"]').text
+      desc = node.xpath('tr/td/span[@class="font-futozi01"]').text
+      m = /#{MATCH_TEXT}/u.match(desc)
+      temp['answer'] = m[1]
+      temp['description'] = m[2] # nilにはならない
+      @result.push(temp)
+    end
+  end
+
   attr_reader :result
 end
 
@@ -45,7 +45,7 @@ class SaveQuestions
   def save(filename)
     open(filename, 'w') do |f|
       f.puts(JSON.pretty_generate(@array)) # 整形して保存
-	end
+    end
   end
 end
 
