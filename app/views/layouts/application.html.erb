@@ -10,12 +10,7 @@
 <h1><a href="/">効果測定解答ロボ</a></h1>
 <p>
   <a href="/">
-  <script>
-  var urlbody = 'https://dl.dropboxusercontent.com/u/53437072/title';
-  var filebody = '<%= "#{@result_pn}" %>';
-  document.write('<img src="' + urlbody + filebody + '.png">');
-  // document.write(urlbody + filebody + '.png');
-  </script>
+    <%= image_tag "title#{@result_pn}.png" %>
   </a>
 </p>
 
@@ -26,14 +21,13 @@
 
 <%= yield %>
 </div>
-<div style="text-align:center">
+<div align="center">
 <p>Training Data (scraping from):</p>
 <ul>
 <li><a href="http://menkyo-web.com/" target="_blank">menkyo-web.com</a></li>
 <li><a href="http://www5b.biglobe.ne.jp/~nobusann/" target="_blank">unten-menkyo.toru</a></li>
 <li><a href="http://www.takaragaike.co.jp/" target="_blank">takaragaike.co.jp</a></li>
 </ul>
-</p>
 </div>
 <script type="text/javascript">
 document.forms[0].elements["input[user]"].value = "進路を変更しようとするときは、３秒前に合図をすれば他の交通に関係なく進路を変えてもよい。";
