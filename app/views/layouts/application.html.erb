@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>効果測定解答ロボ</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<div align="center">
-<h1><a href="/">効果測定解答ロボ</a></h1>
-<p>
-  <a href="/">
-    <%= image_tag "https://ogatube.com/image/robo/title#{@result_pn}.png" %>
-  </a>
-</p>
+  <head>
+    <title>効果測定解答ロボ</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css" />
+  </head>
+  <body>
+    <div align="center">
+      <h1><a href="/">効果測定解答ロボ</a></h1>
+      <p>
+        <a href="/">
+          <%= image_tag "https://ogatube.com/image/robo/title#{@result_pn}.png" %>
+        </a>
+      </p>
 
-<%= form_tag('/analyze') do %>
-  <%= text_area 'input','user', :size=>'60x3' %>
-  <%= submit_tag '教えて! ロボ' %>
-<% end %>
+      <%= form_tag('/analyze') do %>
+        <%= text_area 'input','user', :size=>'60x3' %>
+        <%= submit_tag '教えて! ロボ' %>
+      <% end %>
 
-<%= yield %>
-</div>
-<div align="center">
-<p>Training Data (scraping from):</p>
-<ul>
-<li><a href="http://menkyo-web.com/" target="_blank">menkyo-web.com</a></li>
-<li><a href="http://www5b.biglobe.ne.jp/~nobusann/" target="_blank">unten-menkyo.toru</a></li>
-<li><a href="http://www.takaragaike.co.jp/" target="_blank">takaragaike.co.jp</a></li>
-</ul>
-</div>
-<script type="text/javascript">
-document.forms[0].elements["input[user]"].value = "進路を変更しようとするときは、３秒前に合図をすれば他の交通に関係なく進路を変えてもよい。";
-</script>
-</body>
+      <%= yield %>
+    </div>
+    <div align="center">
+      <p>Training Data (scraping from):</p>
+      <ul>
+      <li><a href="http://menkyo-web.com/" target="_blank">menkyo-web.com</a></li>
+      <li><a href="http://www5b.biglobe.ne.jp/~nobusann/" target="_blank">unten-menkyo.toru</a></li>
+      <li><a href="http://www.takaragaike.co.jp/" target="_blank">takaragaike.co.jp</a></li>
+      </ul>
+    </div>
+    <script type="text/javascript">
+    document.forms[0].elements["input[user]"].value = "進路を変更しようとするときは、３秒前に合図をすれば他の交通に関係なく進路を変えてもよい。";
+    </script>
+  </body>
 </html>
