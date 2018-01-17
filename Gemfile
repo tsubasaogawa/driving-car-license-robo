@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 
+# ruby '2.0.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 
 # Use sqlite3 as the database for Active Record
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.21.0'
 end
 group :development, :test do
   gem 'sqlite3'
@@ -18,10 +20,10 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer',  platforms: :ruby
+gem 'therubyracer', '0.12.3', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '3.1.4'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -32,8 +34,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
-gem 'yahoo_parse_api'
-gem 'libsvm-ruby-swig'
+gem 'yahoo_parse_api', '~> 1.1.0'
+gem 'libsvm-ruby-swig', '~> 0.4.0'
 
 # for scraping use
 # gem 'json'
